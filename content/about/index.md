@@ -3,74 +3,118 @@ date = "2016-11-05T21:05:33+05:30"
 title = "About"
 +++
 
-A minimal and responsive Hugo theme inspired by the system console, crafted for optimal performance with an average page load time of under one second.
+# About Me
 
-Theme is based on a modern and minimal [Terminal CSS](https://terminalcss.xyz/) framework. 
+![My Photo](./assets/me.jpg)
 
-![Console](https://github.com/mrmierzejewski/hugo-theme-console/blob/master/images/preview.png?raw=true)
+Hey! I'm a passionate developer who loves building clean, terminal-style web interfaces. Whether it's crafting sleek frontends or hacking around with backend logic, I thrive on solving problems and learning new tech. When I'm not coding, I'm probably tinkering with Linux setups or writing about dev workflows.
 
-## Live demo
+---
 
-* [https://mrmierzejewski.com/hugo-theme-console/](https://mrmierzejewski.com/hugo-theme-console/)
+## Skills
 
-## Installation
+<div class="terminal-card">
+  <header>Frontend</header>
+  <div>
+    HTML, CSS, JavaScript, React, Terminal CSS
+  </div>
+</div>
 
-From the root of your Hugo site, clone the theme into ```themes/hugo-theme-console``` by running :
+<div class="terminal-card">
+  <header>Backend</header>
+  <div>
+    Node.js, Express, Django, REST APIs
+  </div>
+</div>
 
-```
-$ git submodule add https://github.com/mrmierzejewski/hugo-theme-console.git hugo-theme-console
-```
-    
-See the [Hugo documentation](https://gohugo.io/hugo-modules/theme-components/) for more information.
+<div class="terminal-card">
+  <header>DevOps</header>
+  <div>
+    Docker, GitHub Actions, Linux, Nginx
+  </div>
+</div>
 
-## Configuration
+<div class="terminal-card">
+  <header>Database</header>
+  <div>
+    PostgreSQL, MongoDB, SQLite
+  </div>
+</div>
 
-Set theme parameter in your config file:
+<div class="terminal-card">
+  <header>Tools</header>
+  <div>
+    Git, VS Code, Figma, Postman
+  </div>
+</div>
 
-```
-theme = "hugo-theme-console"
-```
+---
 
-## Quick start
+## Projects
 
-After installation, take a look in the `exampleSite` folder at. This directory contains an example config file and the content for the demo.
+1. **Terminal Blog**
+   - A blog platform styled entirely with Terminal CSS.
+   - [GitHub](#) • [Live Demo](#)
 
-```
-  exampleSite
-  ├── config.toml
-  ├── content
-  │   ├── about
-  │   │   └── index.md
-  │   └── photos
-  │   │   └── arizona-us
-  │   │       ├── arizona-us.jpg
-  │   │       └── index.md
-  │   └── posts
-  │       └── introduction
-  │           └── index.md
-  ├── layouts
-  │
-  └── static
-```
+2. **DevPortfolio**
+   - My portfolio built using Terminal CSS and vanilla JS.
+   - [GitHub](#) • [Live Demo](#)
 
-Copy at least the `config.toml` in the root directory of your website. Overwrite the existing config file if necessary.
+3. **CLI Weather App**
+   - Terminal-based weather app using OpenWeatherMap API.
+   - [GitHub](#)
 
-Hugo includes a development server, so you can view your changes as you go -
-very handy. Spin it up with the following command:
+---
 
-```
-hugo serve
-```
+## Certifications & Achievements
 
-Now you can go to [http://localhost:1313](http://localhost:1313) and the theme should be visible.
+- Certified Kubernetes Administrator – CNCF
+- JavaScript Algorithms and Data Structures – freeCodeCamp
+- Hackathon Winner – DevJunction 2023
 
-## Example Site
+---
 
-To run the example site, please type the following command.
+## Education
 
-```
-make hugo-server
-```
+- **MSc Computer Science**
+  - XYZ University – 2022
+  - Focus: Systems Programming & DevOps
+
+- **BTech Information Technology**
+  - ABC Institute – 2020
+  - GPA: 8.9/10
+
+---
+
+## Work Experience
+
+<div class="terminal-timeline">
+
+  <div class="terminal-card">
+    <header>Software Engineer – TechCorp</header>
+    <div>
+      <strong>2023 – Present</strong><br>
+      Working on cloud-native solutions using Node.js and Docker.
+    </div>
+  </div>
+
+  <div class="terminal-card">
+    <header>Frontend Intern – WebLabs</header>
+    <div>
+      <strong>2022 – 2023</strong><br>
+      Built reusable UI components with React & styled with Terminal CSS.
+    </div>
+  </div>
+
+  <div class="terminal-card">
+    <header>Freelance Developer</header>
+    <div>
+      <strong>2021 – 2022</strong><br>
+      Designed and deployed personal websites and small business portals.
+    </div>
+  </div>
+
+</div>
 
 ## License
 
