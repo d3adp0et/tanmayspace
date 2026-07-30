@@ -2,16 +2,12 @@
 
 ```
 .
-├── LICENSE
 ├── archetypes
 │   └── default.md
 ├── content
 │   ├── about
 │   │   └── index.md
 │   ├── posts
-│   │   ├── Kioptrix-Level-1
-│   │   │   └── index.md
-│   │   ├── _index.md
 │   │   ├── ad-lab
 │   │   │   ├── images
 │   │   │   │   ├── admeme1.jpg
@@ -20,19 +16,43 @@
 │   │   │   └── index.md
 │   │   ├── azure-sentinel-siem
 │   │   │   ├── images
-│   │   │   │   ├── VM-creation-screenshot.png
-│   │   │   │   ├── VM-creation-screenshot2.png
 │   │   │   │   ├── analytics-rule-with-KQL-logic.png
 │   │   │   │   ├── log-analytics-summary.png
 │   │   │   │   ├── log-analytics-workspace-setup.png
-│   │   │   │   └── ss
+│   │   │   │   ├── ss
+│   │   │   │   ├── VM-creation-screenshot2.png
+│   │   │   │   └── VM-creation-screenshot.png
 │   │   │   └── index.md
-│   │   └── base-adress-solver
+│   │   ├── base-adress-solver
+│   │   │   └── index.md
+│   │   ├── fantastic-routers-and-how-to-hack-them
+│   │   │   ├── images
+│   │   │   │   ├── 2026-06-29_22-15.png
+│   │   │   │   ├── flashing-the-firmware.jpg
+│   │   │   │   ├── Pasted-image-20260722212133.png
+│   │   │   │   ├── Pasted-image-20260724091510.png
+│   │   │   │   ├── Pasted-image-20260724091711.png
+│   │   │   │   ├── Pasted-image-20260730154925.png
+│   │   │   │   ├── Screenshot_2026-07-29_23-48-05.png
+│   │   │   │   ├── Screenshot_2026-07-30_00-18-38.png
+│   │   │   │   └── Screenshot_2026-07-30_03-36-25.png
+│   │   │   └── index.md
+│   │   ├── _index.md
+│   │   ├── Kioptrix-Level-1
+│   │   │   └── index.md
+│   │   └── summercon-2026-blog
+│   │       ├── images
+│   │       │   ├── cogapplication.jpeg
+│   │       │   ├── example_adversary_decision_points.jpeg
+│   │       │   ├── full_power_of_companies.jpeg
+│   │       │   ├── getroot.jpeg
+│   │       │   ├── mantheshells.jpeg
+│   │       │   └── tor3guys.jpeg
 │   │       └── index.md
 │   ├── projects
-│   │   ├── _index.md
 │   │   ├── arch-dotfiles.md
 │   │   ├── duckyscript-payloads-4-flipper.md
+│   │   ├── _index.md
 │   │   ├── parsec.md
 │   │   ├── phishing-hook.md
 │   │   ├── secure-instant-messaging-system.md
@@ -109,10 +129,10 @@
 │       │   └── index.md
 │       ├── llmnr-poisoning
 │       │   ├── images
+│       │   │   ├── llmnr.png
 │       │   │   ├── Pasted-image-20251124133806.png
 │       │   │   ├── Pasted-image-20260205141413.png
 │       │   │   ├── Pasted-image-20260205141846.png
-│       │   │   ├── llmnr.png
 │       │   │   └── ss
 │       │   └── index.md
 │       ├── lnk-f-attack
@@ -195,11 +215,13 @@
 │   │   └── list.html
 │   └── projects
 │       └── list.html
+├── LICENSE
+├── README.md
 └── static
-    ├── Tanmay_Sharma_Resume.pdf
     ├── css
     │   ├── custom.css
     │   └── terminal.css
+    ├── favicon1.svg
     ├── favicon.svg
     ├── photos
     │   ├── photo1.jpeg
@@ -209,7 +231,8 @@
     │   ├── photo5.jpg
     │   └── photo6.jpg
     ├── skeletor.jpg
+    ├── Tanmay_Sharma_Resume.pdf
     └── toprightlogo.png
 
-57 directories, 152 files
+61 directories, 171 files
 ```
