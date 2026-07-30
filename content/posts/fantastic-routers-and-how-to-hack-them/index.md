@@ -30,6 +30,7 @@ tags:
   * [Impact](#impact)
   * [Likelihood](#likelihood)
   * [Mitigation](#mitigation)
+* [Closing](#closing)
 
 ## What is this blog and why you should read this
 
