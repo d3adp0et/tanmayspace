@@ -50,13 +50,13 @@ For this project I used the following two routers:
 1. Ubiquiti ERLite-3 (code named Thunderbird)
 2. GL-iNet GL-AR150-POE (code named Niffler)
 
-![[Screenshot_2026-07-29_23-48-05.png]]
+![Image: Listings on `ebay.com` for the `ERLite-3` router](Screenshot_2026-07-29_23-48-05.png)  
 Image: Listings on `ebay.com` for the `ERLite-3` router
 
 It is worth noting that these are not the same routers that most people have at home. The ERLite-3 is a managed router aimed at small businesses, homelabbers, and IT professionals, the kind of device you would find in a small office network or a technically inclined person's homelab rather than plugged in behind a couch. This matters because the people running these are more likely to be managing multiple devices, pushing firmware updates remotely, and operating in environments where an insider threat or supply chain attack would be a much more realistic concern.
 ## How firmware updates work on these old routers
 
-![[flashing the firmware.jpg]]
+![Image: Flashing the firmware](images/flashing-the-firmware.jpg)  
 Image: Flashing the firmware
 
 There is a pretty common way for these old routers to get firmware updates. For whatever router you have, you go to their website and look for your exact router model. Now from this website you just download the update which would be mostly in the form of a tarball. A tarball is just a `.tar` file that is uncompressed group of files and directories that can handle both symlinks and hardlinks, hence preserving the structure of the original file system. Since these files are completely uncompressed, to reduce disk space and bandwidth they can be compressed using other compression system resulting into other file extensions. Some common tar + compression file types are listed below:
@@ -213,7 +213,7 @@ Well all is fine but did you notice something? The updater took the image, compa
 
 I found this vulnerability in both the routers I had available to me and for me the easiest way to know if this vulnerability was present in the router was to just check the contents of the latest firmware. Ubiquit's ERLite-3 router was a `.tar` archive, which can be expanded using the command `tar -xf <firmware img name>`.  
 
-![[Screenshot_2026-07-30_00-18-38.png]]
+![Image: Contents of the tarball](Screenshot_2026-07-30_00-18-38.png)
 Image: Contents of the tarball
 
 The main files in the firmware package are the `squashfs.tmp` and `vmlinux.tmp` which are the root file system and a kernel image respectively. The respective `.tmp.md5` files are the `md5sum` files used to verify the integrity. The remaining files are the version.tmp which simply holds the current version of the firmware (`Version: v3.0.1.5862409.250924.1407`) and the `compat` file which contains `20002:7` on the ERLite-3 and is checked before installation to make sure the image is meant for this specific hardware. It is worth noting that since both of these are plaintext files inside the same unsigned tarball, an attacker can modify them freely, the version.tmp to avoid version conflicts during flashing and the compat file to potentially target a different hardware model entirely. Even though this blog mainly focuses on tampering with `squashfs.tmp` and `squashfs.tmp.md5`, it is worth noting that other files in the same unsigned tarball like the kernel image file `vmlinux.tmp`, the plaintext `compat` and `version.tmp` files are equally at risk of being forged due to the same reason.
@@ -270,7 +270,7 @@ echo_done
 
 The script checks if certain variables like `T_KNAME`, `T_RNAME`, `T_VNAME` which might correspond to kernel name, rootfs name and version name respectively exists or not, then moves on to compare the md5 hashes in the function `check_md5()`. If in case the checksum comparison would fail it would show a message `Invalid checksum. Upgrade Failed.` otherwise it would move on to upgrading the firmware with no further checks for tampering. This now converts our earlier hypothesis into a fact that the verification of files are just limited to a simple checksum match.
 
-![[Screenshot_2026-07-30_03-36-25.png]]
+![Image: Static root file system of the Thunderbird router](Screenshot_2026-07-30_03-36-25.png)
 Image: Static root file system of the Thunderbird router
 
 [add gl-inet part here]
@@ -283,8 +283,8 @@ Image: Static root file system of the Thunderbird router
 
  Starting off with the Thunderbird router. The main problem that I faced while working on this was to understand which sections of the file system will persist my changes and which sections wouldn't since the files that manage the backward compatibility (`/opt/vyatta/etc`) are also responsible to carry forward the configurations from older firmware to the new one. Since we are on this topic it is also note worthy that these automated scripts are also responsible to set up the router when it is first booted. So the places where we can implement our change are the ones that are not touched by the `vyatta` automations. So from further enumerating the system, I was certain about the few places that are regenerated by `vyatta` using the config file which is separate from rootfs and the kernel, these include but are not limited to, `/etc/shadow`, `/etc/hosts`, `authorized_keys` for configured users (like the default `ubnt` user), `sshd_config` etc.
 
-![[Pasted image 20260730154925.png]]
-Image: /home/ubnt/.ssh/authorized_keys automatically generated by vyatta configurations comment on a live router
+![Image: `/home/ubnt/.ssh/authorized_keys` automatically generated by vyatta configurations comment on a live router](Pasted-image-20260730154925.png)
+Image: `/home/ubnt/.ssh/authorized_keys` automatically generated by vyatta configurations comment on a live router
 
 Eg: The vyatta configuration script used to setup the router at first boot
 ```
@@ -508,7 +508,7 @@ after this followed some simple steps to repack the image:
 
 >An important thing to keep in mind (from my own experience): please make sure that the md5sum of the `*.tar` file remains **constant** along the entire transfer path from your work machine to router adjacent machine, thus making sure that the modded file remains unchanged.
 
-![[2026-06-29_22-15.png]]
+![Image: The router accepted the modded tarball](2026-06-29_22-15.png)
 Image: The router accepted the modded tarball
 
 So, now when testing the modded firmware, I saw that the authorized_keys file exists with the right pub_key and yet I was not able to connect to ssh via the `root` user. For me this problem existed because of the line `PermitRootLogin no` in the file `/etc/ssh/sshd_config` on the live router. Simply trying to change the line to `PermitRootLogin yes` on the static file won't work since this is one of those files that are maintained by `vyatta` configurations. I first saw a glimpse of it when trying to find the location of the `sshd_config` file
@@ -604,15 +604,15 @@ notice that location A has the same file as location B but just inside the `/etc
 
 where the lines `for f in securetty ssh/sshd_config default/ssh; do` and `cp -pf ${vyatta_sysconfdir}/$f /etc/$f` show that the file sshd_config is being transferred from vyatta's configuration directory to router's main `/etc` directory (`${vyatta_sysconfdir}/$f` -> `${vyatta_sysconfdir}/sshd_config` -> `${vyatta_prefix}/etc/config` -> `/opt/vyatta/etc/sshd_config`)
 
-![[Pasted image 20260722212133.png]]
+![Image: `Permitrootlogin` value does not persist in the live image (`yes` -> `no`)](Pasted-image-20260722212133.png)
 Image: `Permitrootlogin` value does not persist in the live image (`yes` -> `no`)
 
 So making the change `PermitRootLogin yes` to the file `/opt/vyatta/etc/sshd_config` finally allowed me to connect the router using root user, and hence we have a backdoor to the router with root privileges!
 
-![[Pasted image 20260724091510.png]]
+![Image: Logged in as root, hence the permitrootlogin persisted](Pasted-image-20260724091510.png)
 Image: Logged in as root, hence the permitrootlogin persisted
 
-![[Pasted image 20260724091711.png]]
+![Image: More solid proof](Pasted-image-20260724091711.png)
 Image: More solid proof
 
 Now this is where I thought I could do a lot more fun stuff since I now had a better understanding of what goes where. I wanted to do the following things in addition to having a backdoor:
