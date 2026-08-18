@@ -1,7 +1,7 @@
 ---
 title: "Arch-dotfiles"
 date: 2025-07-25
-github: "https://github.com/clankhead/Arch-dotfiles"
+github: "https://github.com/cottagecheesefritter/Arch-dotfiles"
 summary: "a collection of dotfiles for my arch x11 rice"
 ---
 
