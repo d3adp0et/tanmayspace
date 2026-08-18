@@ -1,7 +1,7 @@
 ---
 title: "DuckyScript Payloads 4 Flipper"
 date: 2025-02-15
-github: "https://github.com/clankhead/DuckyScript-Payloads-4-Flipper"
+github: "https://github.com/cottagecheesefritter/DuckyScript-Payloads-4-Flipper"
 summary: "A collection of custom DuckyScript payloads for HID injection using the Flipper Zero."
 ---
 

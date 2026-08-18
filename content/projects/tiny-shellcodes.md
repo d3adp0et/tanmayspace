@@ -1,7 +1,7 @@
 ---
 title: "Tiny Shellcodes"
 date: 2025-03-28
-github: "https://github.com/clankhead/Tiny-Shellcodes"
+github: "https://github.com/cottagecheesefritter/Tiny-Shellcodes"
 summary: "ASAP (As Small As Possible) Shellcodes"
 ---
 
