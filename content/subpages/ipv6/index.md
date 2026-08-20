@@ -22,15 +22,14 @@ Basic Idea of the attack:
 
 ## How I went about it
 
-```
 Install mitm6 on kali
 
+```
 cd /opt/mitm6
 sudo pip2 install .
-
-
-OR  search mitm6 guthub
 ```
+
+OR simply search mitm6 github
 
 ```
 **!!!! Note:** nevert run this attack for long durations
@@ -39,7 +38,7 @@ only run it for small sprints like for 5-10 mins
 
 #### Process
 **Step 1 :**
-`sudo mitm6 -f marvel.local (DO NOT RUN)`
+`sudo mitm6 -f marvel.local` (DO NOT RUN)
 
 **Step 2 :** 
 ```
